@@ -3,7 +3,7 @@ from matplotlib import style
 style.use('ggplot')
 import numpy as np
 from sklearn.cluster import KMeans
-from sklearn import preprocessing, cross_validation
+from sklearn import preprocessing, model_selection
 import pandas as pd
 
 '''
@@ -26,7 +26,7 @@ home.dest Home/Destination
 df = pd.read_excel('titanic.xls')
 #print(df.head())
 df.drop(['body','name'], 1, inplace=True)
-df.convert_objects(convert_numeric=True)
+df.apply(pd.to_numeric, errors='ignore')
 df.fillna(0, inplace=True)
 #print(df.head())
 
